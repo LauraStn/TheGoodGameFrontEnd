@@ -2,7 +2,28 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: url("../images/fond4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
-main {
+.form-auth {
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 5rem;
+}
+#login,
+#register {
+  padding: 4.5rem;
+  margin: 1.5rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+#signBtn,
+#loginBtn {
+  width: 50%;
+  align-self: center;
 }
