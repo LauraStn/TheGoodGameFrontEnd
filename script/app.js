@@ -4,8 +4,8 @@ async function handleRegister() {
   let password = document.querySelector("#passwordR").value;
 
   let newUser = {
-    userName: userName,
-    email: email,
+    username: userName,
+    mail: email,
     password: password,
   };
 
@@ -17,7 +17,7 @@ async function handleRegister() {
     body: JSON.stringify(newUser),
   };
 
-  let apiRequest = fetch(
+  let apiRequest = await fetch(
     "http://localhost:3008/auth/register",
     request
   );
