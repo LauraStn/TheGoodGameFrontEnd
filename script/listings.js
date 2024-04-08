@@ -1,8 +1,6 @@
 let listings = document.querySelector(".listings");
 
 async function getAllListings() {
-  listings.innerHTML = "";
-
   let getAll = await fetch("http://localhost:3008/product/all");
   let result = await getAll.json();
   result.forEach((listing) => {
@@ -28,18 +26,19 @@ async function getAllListings() {
             </div>`;
   });
 }
-getAllListings();
+if (listings) {
+  getAllListings();
+}
 
 const userListings = document.querySelector(".userListings");
 
 async function getAllFromUser() {
-  userListings.innerHTML = "";
-
-  if (localStorage.getItem("id")) {
-    let getAll = await fetch("http://localhost:3008/product/items/:user_id");
-    let result = await getAll.json();
-    result.forEach((listing) => {
-      listings.innerHTML += `<div
+  let user_id = window.localStorage.getItem("id");
+  let getAll = await fetch(`http://localhost:3008/product/items/${user_id}`);
+  let result = await getAll.json();
+  console.log(result);
+  result.forEach((listing) => {
+    userListings.innerHTML += `<div
             class="bg-gradient-to-tl from-green-400 to-indigo-900 rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden"
           >
             <img
@@ -59,7 +58,8 @@ async function getAllFromUser() {
                 ${listing.price}€
               </p>
             </div>`;
-    });
-  }
+  });
 }
-getAllFromUser();
+if (userListings) {
+  getAllFromUser();
+}
