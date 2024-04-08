@@ -17,18 +17,15 @@ async function register() {
     body: JSON.stringify(newUser),
   };
 
-  try {
-    let apiRequest = await fetch(
-      "http://localhost:3008/auth/register",
-      request
-    );
-    let result = await apiRequest.json();
-    if (result.insertedId) {
-      window.localStorage.setItem("id", insertedId);
-      console.log(insertedId);
-    }
-  } catch (error) {
-    console.log(error);
+  let apiRequest = await fetch("http://localhost:3008/auth/register", request);
+  let result = await apiRequest.json();
+
+  console.log("inscription réussie");
+
+  if (result.insertedId) {
+    window.localStorage.setItem("id", result.insertedId);
+
+    console.log(result.insertedId);
   }
 
   console.log(result);
@@ -61,29 +58,29 @@ console.log("it works");
 let listings = document.querySelector(".listings");
 
 async function getAllListings() {
-  listings.innerHTML = "";
+  // listings.innerHTML = "";
 
   let getAll = await fetch("http://localhost:3008/product/all");
   let result = await getAll.json();
-  result.forEach((listing) => {
+  result.forEach((element) => {
     listings.innerHTML += `<div
             class="bg-gradient-to-tl from-green-400 to-indigo-900 rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden"
           >
             <img
               class="h-56 lg:h-60 w-full object-cover"
-              src="${listing.img}"
+              src="${element.img}"
               alt=""
             />
             <div class="p-3">
-              <span class="text-sm text-white">${listing.date}</span>
+              <span class="text-sm text-white">${element.date}</span>
               <h3 class="font-semibold text-xl leading-6 text-black my-2">
-               ${listing.title}
+               ${element.title}
               </h3>
               <p class="text-black">
-                ${listing.description}
+                ${element.description}
               </p>
               <p class="mt-3 font-semibold block text-right text-black">
-                ${listing.price}€
+                ${element.price}€
               </p>
             </div>`;
   });
