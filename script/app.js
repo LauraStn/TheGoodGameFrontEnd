@@ -1,3 +1,6 @@
+const registerBtn = document.querySelector("#signBtn");
+const registerMsg = document.querySelector(".register-msg");
+
 async function register() {
   let userName = document.querySelector("#userNameRegister").value;
   let email = document.querySelector("#emailRegister").value;
@@ -22,14 +25,20 @@ async function register() {
 
   console.log("inscription réussie");
 
-  if (result.insertedId) {
-    window.localStorage.setItem("id", result.insertedId);
-
-    console.log(result.insertedId);
+  if (result) {
+    window.localStorage.setItem("id", result);
+    registerMsg.innerHTML += `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Registration successful, you can now log in</p>`;
+    console.log(result);
   }
-
-  console.log(result);
 }
+
+registerBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  register();
+});
+
+const loginBtn = document.querySelector("#loginBtn");
+const loginMsg = document.querySelector(".login-msg");
 
 async function login() {
   let email = document.querySelector("#emailLogin").value;
@@ -50,39 +59,16 @@ async function login() {
 
   let apiRequest = await fetch("http://localhost:3008/auth/login", request);
   let result = await apiRequest.json();
+  if (result) {
+    window.localStorage.setItem("id", result._id);
+    loginMsg.innerHTML += `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Login successful</p>`;
+
+    console.log(result._id);
+  }
   console.log(result);
 }
 
-console.log("it works");
-
-let listings = document.querySelector(".listings");
-
-async function getAllListings() {
-  // listings.innerHTML = "";
-
-  let getAll = await fetch("http://localhost:3008/product/all");
-  let result = await getAll.json();
-  result.forEach((element) => {
-    listings.innerHTML += `<div
-            class="bg-gradient-to-tl from-green-400 to-indigo-900 rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden"
-          >
-            <img
-              class="h-56 lg:h-60 w-full object-cover"
-              src="${element.img}"
-              alt=""
-            />
-            <div class="p-3">
-              <span class="text-sm text-white">${element.date}</span>
-              <h3 class="font-semibold text-xl leading-6 text-black my-2">
-               ${element.title}
-              </h3>
-              <p class="text-black">
-                ${element.description}
-              </p>
-              <p class="mt-3 font-semibold block text-right text-black">
-                ${element.price}€
-              </p>
-            </div>`;
-  });
-}
-getAllListings();
+loginBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  login();
+});
