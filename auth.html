@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Good Game - Login/Register</title>
     <link rel="preconnect" href="https://fonts.bunny.net" />
     <link
@@ -25,9 +22,7 @@
       class="header sticky top-0 bg-gradient-to-tl from-green-400 to-indigo-900 shadow-md flex items-center justify-between px-8 py-02"
     >
       <h2 class="w-3/12">
-        <a href="./index.html"
-          ><i class="fa-solid fa-gamepad"></i
-        ></a>
+        <a href="./index.html"><i class="fa-solid fa-gamepad"></i></a>
       </h2>
       <nav class="nav font-semibold text-lg">
         <ul class="flex items-center">
@@ -46,51 +41,41 @@
           id="register"
           class="lg:p-36 md:p-52 sm:20 p-8 lg:w-2/5 rounded-lg bg-gradient-to-tl from-green-400 to-indigo-900"
         >
-          <h2
-            class="text-2xl font-semibold mb-4 text-center"
-          >
-            Join us Now
-          </h2>
+          <h2 class="text-2xl font-semibold mb-4 text-center">Join us Now</h2>
           <form action="">
             <div class="mb-4">
-              <label
-                for="userNameR"
-                class="block text-slate-200"
+              <label for="userNameRegister" class="block text-slate-200"
                 >Username</label
               >
               <input
                 type="text"
-                id="userNameR"
-                name="userNameR"
-                class="userNameR w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 userName"
+                id="userNameRegister"
+                name="userNameRegister"
+                class="userNameRegister w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 userName"
                 autocomplete="off"
               />
             </div>
             <div class="mb-4">
-              <label
-                for="emailR"
-                class="block text-slate-100"
+              <label for="emailRegister" class="block text-slate-100"
                 >Email</label
               >
               <input
                 type="email"
-                id="emailR"
-                name="emailR"
-                class="emailR w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 email"
+                id="emailRegister"
+                name="emailRegister"
+                class="emailRegister w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 email"
                 autocomplete="off"
               />
             </div>
             <div class="mb-7">
-              <label
-                for="passwordR"
-                class="block text-slate-100"
+              <label for="passwordRegister" class="block text-slate-100"
                 >Password</label
               >
               <input
                 type="password"
-                id="passwordR"
-                name="passwordR"
-                class="passwordR w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 password"
+                id="passwordRegister"
+                name="passwordRegister"
+                class="passwordRegister w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 password"
                 autocomplete="off"
               />
             </div>
@@ -101,10 +86,7 @@
                 name="policy"
                 class="text-blue-500"
               />
-              <label
-                for="remember"
-                class="text-slate-200 ml-2"
-              >
+              <label for="remember" class="text-slate-200 ml-2">
                 I accept the
                 <a
                   href="#"
@@ -122,7 +104,7 @@
             <button
               id="signBtn"
               class="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full"
-              onclick="handleRegister()"
+              onclick="register()"
             >
               Create Account
             </button>
@@ -132,37 +114,29 @@
           id="login"
           class="lg:p-36 md:p-52 sm:20 p-8 lg:w-2/5 rounded-lg bg-gradient-to-tl from-green-400 to-indigo-900"
         >
-          <h2
-            class="text-2xl font-semibold mb-4 text-center"
-          >
+          <h2 class="text-2xl font-semibold mb-4 text-center">
             Login to your Account
           </h2>
           <form action="">
             <div class="mb-4">
-              <label
-                for="email"
-                class="block text-slate-100"
-                >Email</label
-              >
+              <label for="emailLogin" class="block text-slate-100">Email</label>
               <input
                 type="email"
-                id="email"
-                name="email"
+                id="emailLogin"
+                name="emailLogin"
                 class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 email"
                 autocomplete="off"
               />
             </div>
 
             <div class="mb-4">
-              <label
-                for="password"
-                class="block text-slate-200"
+              <label for="passwordLogin" class="block text-slate-200"
                 >Password</label
               >
               <input
                 type="password"
-                id="password"
-                name="password"
+                id="passwordLogin"
+                name="passwordLogin"
                 class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 password"
                 autocomplete="off"
               />
@@ -174,20 +148,16 @@
                 name="remember"
                 class="text-blue-500"
               />
-              <label
-                for="remember"
-                class="text-slate-200 ml-2"
+              <label for="remember" class="text-slate-200 ml-2"
                 >Remember Me</label
               >
             </div>
             <div class="mb-6 text-blue-800">
-              <a href="#" class="hover:underline"
-                >Forgot Password?</a
-              >
+              <a href="#" class="hover:underline">Forgot Password?</a>
             </div>
             <button
               id="loginBtn"
-              type="submit"
+              onclick="login()"
               class="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full"
             >
               Login
