@@ -8,13 +8,24 @@
     <link rel="stylesheet" href="./style/style.css" />
   </head>
   <body>
-    <header>
-      <a href="./index.html"><img src="" alt="logo" /></a>
-      <nav>
-        <a href="./listings.html">Listings</a>
+    <header
+      class="header sticky top-0 bg-gradient-to-tl from-green-400 to-indigo-900 shadow-md flex items-center justify-between px-8 py-02"
+    >
+      <h2 class="w-3/12">
+        <a href="./index.html"><i class="fa-solid fa-gamepad"></i></a>
+      </h2>
+      <nav class="nav font-semibold text-lg">
+        <ul class="flex items-center">
+          <li
+            class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer"
+          >
+            <a href="./listings.html">Listings</a>
+          </li>
+        </ul>
       </nav>
     </header>
     <main>
+      <div class="addListing"></div>
       <div class="userListings"></div>
     </main>
     <footer></footer>

@@ -62,8 +62,10 @@ async function login() {
   if (result) {
     window.localStorage.setItem("id", result._id);
     loginMsg.innerHTML += `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Login successful</p>`;
-
     console.log(result._id);
+    setTimeout(() => {
+      window.location.href = "./dashboard.html";
+    }, "3000");
   }
   console.log(result);
 }
