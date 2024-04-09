@@ -85,7 +85,11 @@ if (loginBtn) {
 // (function () {
 //   const user_id = localStorage.getItem("id");
 //   if (user_id === null) {
-//     return (window.location.href = "/auth.html");
+//     return;
+//   } else {
+//     loginBtn.classList.add("hidden");
+//     logoutBtn.classList.remove("hidden");
+//     dashboardBtn.classList.remove("hidden");
 //   }
 
 //   console.log("connected");

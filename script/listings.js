@@ -5,6 +5,14 @@ const userListings = document.querySelector(".userListings");
 const listingBtn = document.querySelector("#listingBtn");
 const listingMsg = document.querySelector(".listing-msg");
 
+const editBtn = document.querySelector("#editBtn");
+const editMsg = document.querySelector(".edit-msg");
+const editModal = document.querySelector(".edit");
+
+const authBtn = document.querySelector(".connect");
+const logoutBtn = document.querySelector(".logoutBtn");
+const dashboardBtn = document.querySelector(".dashboardBtn");
+
 async function getAllListings() {
   let getAll = await fetch("http://localhost:3008/product/all");
   let result = await getAll.json();
@@ -58,8 +66,8 @@ async function getAllFromUser() {
                 ${listing.price}€
               </p>
             </div>
-            <button onclick="deleteListing('${listing._id}')">Delete<button/>
-            <button onclick="updateListing('${listing._id}')">Update<button/>`;
+            <button class="m-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" onclick="deleteListing('${listing._id}')">Delete<button/> 
+            <button class="m-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onclick="updateListing('${listing._id}')">Update<button/>`;
     console.log(listing._id);
   });
 }
@@ -100,7 +108,6 @@ async function createListing() {
 
   if (result) {
     listingMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Create</p>`;
-    const listing_id = result._id;
   }
 }
 
@@ -133,12 +140,24 @@ async function deleteListing(id) {
 }
 
 async function updateListing(id) {
+  editModal.classList.add("modal");
+
+  let image = document.querySelector("#editImage").value;
+  let price = document.querySelector("#editPrice").value;
+  let description = document.querySelector("#editDescription").value;
+
+  let editListing = {
+    img: image,
+    price: price,
+    description: description,
+  };
+
   let request = {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
     },
-    body: JSON.stringify(),
+    body: JSON.stringify(editListing),
   };
 
   let apiRequest = await fetch(
@@ -146,7 +165,31 @@ async function updateListing(id) {
     request
   );
   let result = await apiRequest.json();
-
-  userListings.innerHTML = "";
-  getAllFromUser();
 }
+if (editBtn) {
+  editBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    updateListing();
+    window.alert("Listing updated !");
+    userListings.innerHTML = "";
+    getAllFromUser();
+  });
+}
+
+(function isConnected() {
+  const user_id = localStorage.getItem("id");
+
+  if (user_id === null) {
+    console.log("not conected");
+  } else {
+    if (authBtn) {
+      authBtn.classList.add("hidden");
+    }
+    if (logoutBtn) {
+      logoutBtn.classList.remove("hidden");
+    }
+    if (dashboardBtn) {
+      dashboardBtn.classList.remove("hidden");
+    }
+  }
+})();

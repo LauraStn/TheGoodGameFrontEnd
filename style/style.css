@@ -6,6 +6,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  position: relative;
 }
 .form-auth {
   display: flex;
@@ -15,7 +16,8 @@ body {
 }
 #login,
 #register,
-#createListing {
+#createListing,
+#editListing {
   padding: 4.5rem;
   margin: 1.5rem;
 }
@@ -25,7 +27,8 @@ form {
 }
 #signBtn,
 #loginBtn,
-#listingBtn {
+#listingBtn,
+#editBtn {
   width: 50%;
   align-self: center;
 }
@@ -42,6 +45,20 @@ img {
   height: 80vh;
   margin-inline: auto;
   margin-block: 25px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+.modal {
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 500px;
+  z-index: 1;
+}
+.visible {
+  visibility: visible;
 }
 @media screen and (min-width: 600px) {
   .form-auth {
