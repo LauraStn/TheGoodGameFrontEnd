@@ -51,7 +51,6 @@ img {
   visibility: hidden;
 }
 .modal {
-  visibility: visible;
   position: absolute;
   top: 0;
   left: 500px;

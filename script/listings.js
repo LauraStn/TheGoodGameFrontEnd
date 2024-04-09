@@ -140,7 +140,7 @@ async function deleteListing(id) {
 }
 
 async function updateListing(id) {
-  editModal.classList.add("modal");
+  editModal.classList.remove("hidden");
 
   let image = document.querySelector("#editImage").value;
   let price = document.querySelector("#editPrice").value;
@@ -166,11 +166,13 @@ async function updateListing(id) {
   );
   let result = await apiRequest.json();
 }
+
 if (editBtn) {
   editBtn.addEventListener("click", (e) => {
     e.preventDefault();
     updateListing();
     window.alert("Listing updated !");
+    editModal.classList.remove("hidden");
     userListings.innerHTML = "";
     getAllFromUser();
   });
