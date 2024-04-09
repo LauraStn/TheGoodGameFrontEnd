@@ -81,17 +81,3 @@ if (loginBtn) {
     login();
   });
 }
-
-// (function () {
-//   const user_id = localStorage.getItem("id");
-//   if (user_id === null) {
-//     return;
-//   } else {
-//     loginBtn.classList.add("hidden");
-//     logoutBtn.classList.remove("hidden");
-//     dashboardBtn.classList.remove("hidden");
-//   }
-
-//   console.log("connected");
-//   console.log(user_id);
-// })();

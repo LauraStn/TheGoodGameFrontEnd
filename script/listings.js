@@ -176,6 +176,7 @@ if (editBtn) {
   });
 }
 
+//Self-Invoking Functions
 (function isConnected() {
   const user_id = localStorage.getItem("id");
 
@@ -193,3 +194,15 @@ if (editBtn) {
     }
   }
 })();
+
+function logout() {
+  window.localStorage.removeItem("id");
+}
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", (e) => {
+    logout();
+    window.alert("Logout");
+    window.location.href = "./index.html";
+  });
+}
