@@ -14,7 +14,8 @@ body {
   gap: 5rem;
 }
 #login,
-#register {
+#register,
+#createListing {
   padding: 4.5rem;
   margin: 1.5rem;
 }
@@ -23,7 +24,8 @@ form {
   flex-direction: column;
 }
 #signBtn,
-#loginBtn {
+#loginBtn,
+#listingBtn {
   width: 50%;
   align-self: center;
 }
@@ -32,10 +34,42 @@ img {
   max-width: 100%;
   max-height: auto;
 }
-
+.dashboard {
+  background: url("../images/dashboard.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 70%;
+  height: 80vh;
+  margin-inline: auto;
+  margin-block: 25px;
+}
 @media screen and (min-width: 600px) {
   .form-auth {
     flex-direction: row;
     padding: 0;
+  }
+  .addListing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.background-animate {
+  background-size: 200%;
+  -webkit-animation: AnimateBackgroud 0.7s ease infinite;
+  -moz-animation: AnimateBackgroud 0.7s ease infinite;
+  animation: AnimateBackgroud 0.7s ease infinite;
+}
+
+@keyframes AnimateBackgroud {
+  0% {
+    background-position: 0;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0;
   }
 }

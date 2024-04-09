@@ -1,6 +1,9 @@
 const registerBtn = document.querySelector("#signBtn");
 const registerMsg = document.querySelector(".register-msg");
 
+const loginBtn = document.querySelector("#loginBtn");
+const loginMsg = document.querySelector(".login-msg");
+
 async function register() {
   let userName = document.querySelector("#userNameRegister").value;
   let email = document.querySelector("#emailRegister").value;
@@ -25,13 +28,9 @@ async function register() {
 
   if (result) {
     window.localStorage.setItem("id", result);
-    registerMsg.innerHTML += `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Registration successful, you can now log in</p>`;
-    console.log(result);
+    registerMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Registration successful, you can now log in</p>`;
   }
 }
-
-const loginBtn = document.querySelector("#loginBtn");
-const loginMsg = document.querySelector(".login-msg");
 
 async function login() {
   let email = document.querySelector("#emailLogin").value;
@@ -61,18 +60,21 @@ async function login() {
     window.localStorage.setItem("id", result.user._id);
     loginMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Login successful,<br>
     you will be redirected to your dashboard</p>`;
+    console.log("yes");
 
     setTimeout(() => {
       window.location.href = "./dashboard.html";
-    }, "5000");
+    }, "4000");
   }
 }
+
 if (registerBtn) {
   registerBtn.addEventListener("click", (e) => {
     e.preventDefault();
     register();
   });
 }
+
 if (loginBtn) {
   loginBtn.addEventListener("click", (e) => {
     e.preventDefault();
