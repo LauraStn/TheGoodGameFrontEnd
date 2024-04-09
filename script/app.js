@@ -23,8 +23,6 @@ async function register() {
   let apiRequest = await fetch("http://localhost:3008/auth/register", request);
   let result = await apiRequest.json();
 
-  console.log("inscription réussie");
-
   if (result) {
     window.localStorage.setItem("id", result);
     registerMsg.innerHTML += `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Registration successful, you can now log in</p>`;
@@ -54,16 +52,20 @@ async function login() {
 
   let apiRequest = await fetch("http://localhost:3008/auth/login", request);
   let result = await apiRequest.json();
-  if (result) {
-    window.localStorage.setItem("id", result._id);
-    loginMsg.innerHTML += `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Login successful</p>`;
-    console.log(result._id);
+
+  if (result.status !== 200) {
+    loginMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Invalid credentials</p>`;
+
+    return;
+  } else {
+    window.localStorage.setItem("id", result.user._id);
+    loginMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Login successful,<br>
+    you will be redirected to your dashboard</p>`;
 
     setTimeout(() => {
       window.location.href = "./dashboard.html";
-    }, "3000");
+    }, "5000");
   }
-  console.log(result);
 }
 if (registerBtn) {
   registerBtn.addEventListener("click", (e) => {
@@ -77,3 +79,13 @@ if (loginBtn) {
     login();
   });
 }
+
+// (function () {
+//   const user_id = localStorage.getItem("id");
+//   if (user_id === null) {
+//     return (window.location.href = "/auth.html");
+//   }
+
+//   console.log("connected");
+//   console.log(user_id);
+// })();
