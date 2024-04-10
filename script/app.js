@@ -27,10 +27,13 @@ async function register() {
   let result = await apiRequest.json();
 
   if (result.status !== 201) {
-    registerMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-green-400 to-lime-400 text-lime-800 font-bold">Fail</p>`;
+    registerMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">This mail already exist</p>`;
     return;
   } else {
     registerMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-green-400 to-lime-400 text-lime-800 font-bold">Registration successful, you can now log in</p>`;
+    setTimeout(() => {
+      window.location.reload();
+    }, "3000");
   }
 }
 
