@@ -26,8 +26,10 @@ async function register() {
   let apiRequest = await fetch("http://localhost:3008/auth/register", request);
   let result = await apiRequest.json();
 
-  if (result) {
-    window.localStorage.setItem("id", result);
+  if (result.status !== 201) {
+    registerMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-green-400 to-lime-400 text-lime-800 font-bold">Fail</p>`;
+    return;
+  } else {
     registerMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-green-400 to-lime-400 text-lime-800 font-bold">Registration successful, you can now log in</p>`;
   }
 }

@@ -253,7 +253,7 @@ async function updateListing(id) {
 
   if (user_id === null) {
   } else {
-    displayName.innerText = user_name;
+    displayName.innerHTML = `<p>${user_name}</p>`;
     if (authBtn) {
       authBtn.classList.add("hidden");
     }
@@ -268,6 +268,7 @@ async function updateListing(id) {
 
 function logout() {
   window.localStorage.removeItem("id");
+  window.localStorage.removeItem("username");
 }
 
 if (logoutBtn) {
