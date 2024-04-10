@@ -6,7 +6,6 @@ const listingBtn = document.querySelector("#listingBtn");
 const listingMsg = document.querySelector(".listing-msg");
 
 const editBtn = document.querySelector("#editBtn");
-const editModal = document.querySelector(".edit");
 
 const authBtn = document.querySelector(".connect");
 const logoutBtn = document.querySelector(".logoutBtn");
@@ -148,6 +147,8 @@ async function deleteListing(id) {
 }
 
 async function displayEdit(id) {
+  const editModal = document.querySelector(".edit");
+
   let request = {
     method: "GET",
     headers: {
@@ -159,7 +160,6 @@ async function displayEdit(id) {
     request
   );
   let result = await apiRequest.json();
-
   editModal.innerHTML = `
   <div
     id="editListing"
