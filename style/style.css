@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: url("../images/fond4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+.form-auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 5rem;
+}
+#login,
+#register,
+#createListing,
+#editListing {
+  padding: 4.5rem;
+  margin: 1.5rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+#signBtn,
+#loginBtn,
+#listingBtn,
+#editBtn {
+  width: 50%;
+  align-self: center;
+}
+
+img {
+  max-width: 100%;
+  max-height: auto;
+}
+.dashboard {
+  background: url("../images/dashboard.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 70%;
+  height: 80vh;
+  margin-inline: auto;
+  margin-block: 25px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+.modal {
+  position: absolute;
+  top: 0;
+  left: 500px;
+  z-index: 1;
+}
+.visible {
+  visibility: visible;
+}
+@media screen and (min-width: 600px) {
+  .form-auth {
+    flex-direction: row;
+    padding: 0;
+  }
+  .addListing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.background-animate {
+  background-size: 200%;
+  -webkit-animation: AnimateBackgroud 0.7s ease infinite;
+  -moz-animation: AnimateBackgroud 0.7s ease infinite;
+  animation: AnimateBackgroud 0.7s ease infinite;
+}
+
+@keyframes AnimateBackgroud {
+  0% {
+    background-position: 0;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0;
+  }
+}
