@@ -28,7 +28,7 @@ async function register() {
 
   if (result) {
     window.localStorage.setItem("id", result);
-    registerMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Registration successful, you can now log in</p>`;
+    registerMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-green-400 to-lime-400 text-lime-800 font-bold">Registration successful, you can now log in</p>`;
   }
 }
 
@@ -58,7 +58,7 @@ async function login() {
     return;
   } else {
     window.localStorage.setItem("id", result.user._id);
-    loginMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Login successful,<br>
+    loginMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-green-400 to-lime-400 text-lime-800 font-bold">Login successful,<br>
     you will be redirected to your dashboard</p>`;
     console.log("yes");
 
