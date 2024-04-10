@@ -12,6 +12,8 @@ const authBtn = document.querySelector(".connect");
 const logoutBtn = document.querySelector(".logoutBtn");
 const dashboardBtn = document.querySelector(".dashboardBtn");
 
+const displayName = document.querySelector(".displayName");
+
 async function getAllListings() {
   let getAll = await fetch("http://localhost:3008/product/all");
   let result = await getAll.json();
@@ -247,9 +249,11 @@ async function updateListing(id) {
 //Self-Invoking Functions
 (function isConnected() {
   const user_id = localStorage.getItem("id");
+  const user_name = localStorage.getItem("username");
 
   if (user_id === null) {
   } else {
+    displayName.innerText = user_name;
     if (authBtn) {
       authBtn.classList.add("hidden");
     }

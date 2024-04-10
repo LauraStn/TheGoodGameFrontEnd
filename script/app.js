@@ -58,6 +58,7 @@ async function login() {
     return;
   } else {
     window.localStorage.setItem("id", result.user._id);
+    window.localStorage.setItem("username", result.user.username);
     loginMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-green-400 to-lime-400 text-lime-800 font-bold">Login successful,<br>
     you will be redirected to your dashboard</p>`;
     console.log("yes");
