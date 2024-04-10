@@ -104,18 +104,12 @@ async function createListing() {
   };
   let apiRequest = await fetch("http://localhost:3008/product/add", request);
   let result = await apiRequest.json();
-  if (
-    title === "" ||
-    image === "" ||
-    price === "" ||
-    state === "" ||
-    description === ""
-  ) {
-    listingMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Listing added !</p>`;
+  if (result.status !== 201) {
+    listingMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-pink-300 to-pink-400 text-red-800 font-bold">Missing fields</p>`;
+    return;
   }
-  if (result) {
-    listingMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-green-400 to-lime-400 text-lime-800 font-bold">Listing added !</p>`;
-  }
+
+  listingMsg.innerHTML = `<p class="mt-7 text-center rounded-lg bg-gradient-to-r from-green-400 to-lime-400 text-lime-800 font-bold">Listing added !</p>`;
 }
 
 if (listingBtn) {
@@ -253,7 +247,6 @@ async function updateListing(id) {
 
   if (user_id === null) {
   } else {
-    displayName.innerHTML = `<p>${user_name}</p>`;
     if (authBtn) {
       authBtn.classList.add("hidden");
     }
@@ -263,6 +256,7 @@ async function updateListing(id) {
     if (dashboardBtn) {
       dashboardBtn.classList.remove("hidden");
     }
+    displayName.innerHTML = `<p>${user_name}</p>`;
   }
 })();
 
